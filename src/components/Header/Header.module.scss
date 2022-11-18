@@ -1,0 +1,31 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-height: auto;
+    max-width: 1080px;margin-top: 85px;
+    .left_wrapper {
+        display: flex;
+        align-items: center;    
+        img {
+            max-width: auto;
+            max-height: 66px;
+        }
+        .left_wrapper__tagline {
+            margin-left: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+    ul {
+        display: flex;
+        list-style-type: none;
+        
+        li {
+            margin-left: 30px;
+        }
+    }
+
+}
