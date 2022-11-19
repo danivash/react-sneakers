@@ -12,24 +12,23 @@ const Header = () => {
         <div className={classes.left_wrapper}>
           <img src={logo} className="logo"></img>
           <div className={classes.left_wrapper__tagline}>
-            <h2>REACT SNEAKERS</h2>
-            <p>The best store sneakers</p>
+            <h2 style={{fontSize:'18px'}}>REACT SNEAKERS</h2>
+            <p style={{fontSize: '16px'}} >The best store sneakers</p>
           </div>
         </div>
         <ul>
           <li>
-            <a>
               <img src={basket} alt="my offer" />
+              <span>1250$</span>
+          </li>
+          <li>
+            <a href="#">
+              <img width={18} height={18} src={favorite} alt="my favorite" />
             </a>
           </li>
           <li>
             <a href="#">
-              <img src={favorite} alt="my favorite" />
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <img src={profile} alt="my profile" />
+              <img width={18} height={18} src={profile} alt="my profile" />
             </a>
           </li>
         </ul>

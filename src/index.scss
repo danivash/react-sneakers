@@ -7,9 +7,9 @@ body {
 }
 
 body {
-  display: block;
-  margin: 0 auto;
-  max-width: 1250px;
+  //display: block;
+  // margin: 0 auto; 
+ // max-width: 1250px;
   background-color:#E7F6FF;
 }
 
@@ -18,11 +18,11 @@ code {
     monospace;
 }
 
-
 .wrapper {
-  max-width: auto;
-  max-height: 100%;
-  background-color: #fff;
+  display: block;
+  margin: 0 auto;
+  max-width: 1080px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04 );
+  background: #fff;
   border-radius: 20px;
-
 }
