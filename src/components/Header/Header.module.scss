@@ -4,8 +4,10 @@
     align-items: center;
     padding: 40px;
     border-bottom: 1px solid #eaeaea;
-    // max-height: auto;
-    // max-width: 1080px;margin-top: 85px;
+    p {
+        opacity: 0.5;
+    }
+    margin-top: 85px;
     .left_wrapper {
         display: flex;
         align-items: center;    

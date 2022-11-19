@@ -10,7 +10,7 @@ const Header = () => {
     <header>
       <div className={classes.header}>
         <div className={classes.left_wrapper}>
-          <img src={logo} className="logo"></img>
+          <img src={logo} className={classes.logo}></img>
           <div className={classes.left_wrapper__tagline}>
             <h2 style={{fontSize:'18px'}}>REACT SNEAKERS</h2>
             <p style={{fontSize: '16px'}} >The best store sneakers</p>
