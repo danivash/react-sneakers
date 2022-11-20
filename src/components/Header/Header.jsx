@@ -19,7 +19,9 @@ const Header = () => {
         <ul>
           <li>
               <img src={basket} alt="my offer" />
-              <span>1250$</span>
+          </li>
+          <li>
+          <span>1250$</span>
           </li>
           <li>
             <a href="#">
