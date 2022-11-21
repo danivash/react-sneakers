@@ -1,9 +1,10 @@
-import './index.scss';
+import "./index.scss";
 import Header from "./components/Header/Header";
-import Card from './components/Card/Card';
-import Search from './images/content/search.svg';
-import Vector from './images/content/Vector.svg';
-import Sneakers from './images/sneakers/nike_green.jpg'
+import Card from "./components/Card/Card";
+import Search from "./images/content/search.svg";
+import Vector from "./images/content/Vector.svg";
+import Arrow from "./images/content/arrow.svg";
+import Sneakers from "./images/sneakers/nike_green.jpg";
 function App() {
   return (
     <div className="wrapper">
@@ -34,18 +35,21 @@ function App() {
             </div>
           </div>
 
-          <ul>
-            <li>
-              <span>Total:</span>
-              <div></div>
-              <b>45$</b>
-            </li>
-            <li>
-              <span>Charge 10%:</span>
-              <div></div>
-              <b>4$</b>
-            </li>
-          </ul>
+          <div className="order">
+            <ul>
+              <li>
+                <span>Total:</span>
+                <div></div>
+                <b>45$</b>
+              </li>
+              <li>
+                <span>Charge 10%:</span>
+                <div></div>
+                <b>4$</b>
+              </li>
+            </ul>
+            <button className="btn_offer">Pay now <img src={Arrow} alt="Arrow" /></button>
+          </div>
         </div>
       </div>
       <Header />
