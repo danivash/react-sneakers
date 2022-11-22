@@ -10,6 +10,9 @@ body {
   display: block;
   margin: 0 auto; 
   max-width: 1250px;
+  height: auto;
+  width: 100vw;
+  height: 100vh;
   background-color:#E7F6FF;
 }
 
@@ -27,6 +30,7 @@ code {
 
   .overlay {
     position: absolute;
+    top: 0;
     left: 0;
     right: 0;
     width: 100%;
@@ -41,18 +45,25 @@ code {
       position: absolute;
       width: 420px;
       height: 100%;
+      // width: 20vw;
+      // height: 100vh;
       right: 0;
       background: #fff;
       box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.1);
-
-      h2 {
-        margin: 0;
-        margin-bottom: 30px;
+      .header-basket {
+        display: flex;
+        justify-content: space-between;
+        h2 {
+          margin: 0;
+          margin-bottom: 30px;
+        }
+        
       }
 
       .items {
         flex: 1;
-
+        overflow: auto;
+        margin-bottom: 50px;
         .basketItem {
           display: flex;
           align-items: center;
@@ -63,31 +74,31 @@ code {
           margin-bottom: 20px;
           padding: 20px;
 
-          button {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: #FFFFFF;
-            border: 1px solid #f2f2f2;
-            box-sizing: border-box;
-            border-radius: 8px;
-            height: 32px;
-            width: 32px;
-            cursor: pointer;
-            opacity: 0.6;
-            transition: opacity 0.15s ease-in-out;
-
-            &:hover {
-              opacity: 1;
-            }
-          }
         }
       }
+      .button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #FFFFFF;
+        border: 1px solid #f2f2f2;
+        box-sizing: border-box;
+        border-radius: 8px;
+        height: 32px;
+        width: 32px;
+        cursor: pointer;
+        opacity: 0.6;
+        transition: opacity 0.15s ease-in-out;
 
+        &:hover {
+          opacity: 1;
+        }
+      }
       .order {
+        margin-bottom: 60px;
         ul {
           padding: 0;
-          margin-bottom: 40px;
+          margin-bottom: 30px;
 
           li {
             display: flex;

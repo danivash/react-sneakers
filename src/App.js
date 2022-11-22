@@ -8,10 +8,14 @@ import Sneakers from "./images/sneakers/nike_green.jpg";
 function App() {
   return (
     <div className="wrapper">
-      <div className="overlay">
+      <div style={{display: "none"}} className="overlay">
         <div className="right-wrapper">
-          <h2>Basket</h2>
-
+          <div className="header-basket">
+            <h2>Basket</h2>
+            <button className="button">
+              <img src={Vector} alt="Remove" />
+            </button>
+          </div>
           <div className="items">
             <div className="basketItem">
               <img width={70} height={70} src={Sneakers} alt="Sneakers" />
@@ -19,7 +23,7 @@ function App() {
                 <p>Man Sneakers: Nike Blazer Mid Suede</p>
                 <b>45$</b>
               </div>
-              <button>
+              <button className="button">
                 <img src={Vector} alt="Remove" />
               </button>
             </div>
@@ -29,10 +33,15 @@ function App() {
                 <p>Man Sneakers: Nike Blazer Mid Suede</p>
                 <b>45$</b>
               </div>
-              <button>
+              <button className="button">
                 <img src={Vector} alt="Remove" />
               </button>
             </div>
+
+
+
+
+            
           </div>
 
           <div className="order">
@@ -48,7 +57,9 @@ function App() {
                 <b>4$</b>
               </li>
             </ul>
-            <button className="btn_offer">Pay now <img src={Arrow} alt="Arrow" /></button>
+            <button className="btn_offer">
+              Pay now <img src={Arrow} alt="Arrow" />
+            </button>
           </div>
         </div>
       </div>
