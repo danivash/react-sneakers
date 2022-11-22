@@ -4,11 +4,11 @@ import Card from "./components/Card/Card";
 import Search from "./images/content/search.svg";
 import Basket from "./components/Basket/Basket";
 
-// const arr = [
-//   {name: 'Man Sneakers: Nike Blazer Mid Suede', price: 45},
-//   {name: 'Lorem ipsum dolor sit amet.', price: 20},
-//   {name: 'Man Sneakers: Nike Blazer Mid Suede', price: 12}
-// ]
+const arr = [
+  {title: 'Man Sneakers: Nike Blazer Mid Suede1', price: 20},
+  {title: 'Man Sneakers: Nike Blazer Mid Suede2', price: 45},
+  {title: 'Man Sneakers: Nike Blazer Mid Suede3', price: 12}
+]
 
 function App() {
   return (
@@ -25,10 +25,13 @@ function App() {
         </div>
 
         <div style={{ display: "flex" }}>
-        {/* {arr.map((obj) => (
-          <Card />
-        ))} */}
-        <Card/>
+        {arr.map((obj) => (
+          <Card 
+          title={obj.title} 
+          price={obj.price}
+          />
+        ))} 
+         
         </div>
       </div>
     </div>
