@@ -1,0 +1,130 @@
+.overlay {
+    display: none;  //temp
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+
+    .right_wrapper {
+      display: flex;
+      flex-direction: column;
+      padding: 30px;
+      position: absolute;
+      width: 420px;
+      height: 100%;
+      // width: 20vw;
+      // height: 100vh;
+      right: 0;
+      background: #fff;
+      box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.1);
+      .header_basket {
+        display: flex;
+        justify-content: space-between;
+        h2 {
+          margin: 0;
+          margin-bottom: 30px;
+        }
+        
+      }
+
+      .items {
+        flex: 1;
+        overflow: auto;
+        margin-bottom: 50px;
+        .basketItem {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          border: 1px solid #f3f3f3;
+          border-radius: 20px;
+          overflow: hidden;
+          margin-bottom: 20px;
+          padding: 20px;
+
+        }
+      }
+      .button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #FFFFFF;
+        border: 1px solid #f2f2f2;
+        box-sizing: border-box;
+        border-radius: 8px;
+        height: 32px;
+        width: 32px;
+        cursor: pointer;
+        opacity: 0.6;
+        transition: opacity 0.15s ease-in-out;
+
+        &:hover {
+          opacity: 1;
+        }
+      }
+      .order {
+        margin-bottom: 60px;
+        ul {
+          padding: 0;
+          margin-bottom: 30px;
+
+          li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+
+            b {
+              font-size: 18px;
+            }
+
+            div {
+              flex: 1;
+              height: 1px;
+              border-bottom: 1px dashed #dfdfdf;
+              position: relative;
+              top: 5px;
+              margin: 0 5px;
+            }
+          }
+        }
+
+        .btn_offer {
+          position: relative;
+          width: 100%;
+          height: 55px;
+          background: #7cc425;
+          border-radius: 18px;
+          border: none;
+          color: #fff;
+          font-size: 16px;
+          font-weight: 600;
+          cursor: pointer;
+          transition: background 0.2s ease-in-out;
+          
+          &:hover {
+            background:  lighten($color: #7cc425, $amount: 5%);
+          }
+          
+          &:active {
+            background: darken($color: #7cc425, $amount: 10%);
+          }
+
+          img {
+            position: absolute;
+            right: 40px;
+            top: 20px;
+            transition: transform 0.2s ease-in-out;
+
+          }
+          &:hover img{
+            transform: translateX(10px);  //Arrow  -> 10px
+          }
+        }
+      }
+
+
+    }
+  }
