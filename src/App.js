@@ -3,13 +3,13 @@ import Header from "./components/Header/Header";
 import Card from "./components/Card/Card";
 import Search from "./images/content/search.svg";
 import Basket from "./components/Basket/Basket";
-
 const arr = [
-  {title: 'Man Sneakers: Nike Blazer Mid Suede1', price: 20},
-  {title: 'Man Sneakers: Nike Blazer Mid Suede2', price: 45},
-  {title: 'Man Sneakers: Nike Blazer Mid Suede3', price: 12}
+  {title: 'Man Sneakers: Nike Blazer Mid Suede1', price: 45, imageUrl: 'img/snk1.jpg'},
+  {title: 'Man Sneakers: Nike Air Max 270', price: 45, imageUrl: 'img/snk2.jpg'},
+  {title: 'Man Sneakers: Nike Blazer Mid', price: 30, imageUrl: 'img/snk3.jpg'},
+  {title: 'Man Sneakers: Puma X Aka Boku Future Rider', price: 32, imageUrl: 'img/snk4.jpg'}
 ]
-
+console.log(arr);
 function App() {
   return (
     <div className="wrapper">
@@ -29,6 +29,9 @@ function App() {
           <Card 
           title={obj.title} 
           price={obj.price}
+          imageUrl={obj.imageUrl}
+          onClick={() => console.log(obj)}
+          key={obj.price}
           />
         ))} 
          
