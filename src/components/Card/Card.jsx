@@ -1,10 +1,5 @@
 import React, { useState } from 'react'
 import classes from "./Card.module.scss"
-import Plus from "../../images/content/card/plus.svg"
-import Favorite from "../../images/content/card/favorite.jpg"
-import BtnBeforeOrder from '../UI/ButtonInCard/BtnBeforeOrder'
-import BtnAfterOrder from '../UI/ButtonInCard/BtnAfterOrder'
-import BtnFavorite from '../UI/ButtonInCard/BtnFavorite'
 
 const Card = (props) => {
   
@@ -25,7 +20,6 @@ const Card = (props) => {
           <b>{props.price}$</b>
         </div>
           <img  className={classes.btn} onClick={onClickPlus} src={isAdded ? "/img/btn-checked.svg" : "/img/btn-plus.svg"} width={11} height={11} alt="plus" />
-          {/* <BtnBeforeOrder onClick={onClickPlus} onChange={isAdded }/> */}
       </div>
     </div>
   );
