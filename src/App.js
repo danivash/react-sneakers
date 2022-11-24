@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import "./index.scss";
 import Header from "./components/Header/Header";
 import Card from "./components/Card/Card";
@@ -11,6 +12,17 @@ const arr = [
 ]
 console.log(arr);
 function App() {
+
+  // const [count, setCount] = useState(0);
+
+  // const plus = () => {
+  //   setCount (count + 1) ;
+  // }
+
+  // const minus = () => {
+  //   setCount(count - 1)
+  // }
+
   return (
     <div className="wrapper">
       <Basket/>
