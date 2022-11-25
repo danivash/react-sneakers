@@ -16,7 +16,7 @@ const Card = (props) => {
 
   return (
     <div className={classes.card}>
-        <img className={classes.btn} onClick={onClickFavorite} src={!isAddedFavorite ? "/img/btn-favorite-disabled.png" : "/img/btn-favorite-enabled.png"} alt="Save Sneakers to favorite" />
+        <img className={classes.btn} onClick={onClickFavorite} src={isAddedFavorite ? "/img/btn-favorite-enabled.png" : "/img/btn-favorite-disabled.png"} alt="Save Sneakers to favorite" />
       <img src={props.imageUrl} width={133} height={112} alt="Sneakers" />
       <h5>{props.title}</h5>
       <div className={classes.card_footer}>

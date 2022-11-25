@@ -17,12 +17,13 @@ const Header = () => {
           </div>
         </div>
         <ul>
-          <li>
+          <li className={classes.basket}>
               <img src={basket} alt="my offer" />
+              <span>1250$</span>
           </li>
-          <li>
+          {/* <li>
           <span>1250$</span>
-          </li>
+          </li> */}
           <li>
             <a href="#">
               <img width={18} height={18} src={favorite} alt="my favorite" />

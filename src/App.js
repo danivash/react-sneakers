@@ -13,15 +13,7 @@ const arr = [
 console.log(arr);
 function App() {
 
-  // const [count, setCount] = useState(0);
-
-  // const plus = () => {
-  //   setCount (count + 1) ;
-  // }
-
-  // const minus = () => {
-  //   setCount(count - 1)
-  // }
+  const [basketOpened, setBasketOpened] = useState(false);
 
   return (
     <div className="wrapper">
