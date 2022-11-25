@@ -5,7 +5,7 @@ import basket from '../../images/header/Group.svg'
 import favorite from '../../images/header/favorite.png'
 import profile from '../../images/header/profile.svg'
 
-const Header = () => {
+const Header = (props) => {
   return (
     <header>
       <div className={classes.header}>
@@ -17,13 +17,10 @@ const Header = () => {
           </div>
         </div>
         <ul>
-          <li className={classes.basket}>
+          <li onClick={props.onClickBasket} className={classes.basket}>
               <img src={basket} alt="my offer" />
               <span>1250$</span>
           </li>
-          {/* <li>
-          <span>1250$</span>
-          </li> */}
           <li>
             <a href="#">
               <img width={18} height={18} src={favorite} alt="my favorite" />

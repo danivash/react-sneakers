@@ -3,15 +3,15 @@ import classes from "./Basket.module.scss";
 import Vector from "../../images/content/Vector.svg";
 import Arrow from "../../images/content/arrow.svg";
 import Sneakers from "../../images/sneakers/nike_green.jpg";
-const Basket = () => {
+const Basket = (props) => {
   return (
     <div>
       <div className={classes.overlay}>
         <div className={classes.right_wrapper}>
           <div className={classes.header_basket}>
             <h2>Basket</h2>
-            <button className={classes.button}>
-              <img src={Vector} alt="Remove" />
+            <button onClick={props.onClose} className={classes.button}>
+              <img src={Vector} alt="Close" />
             </button>
           </div>
           <div className={classes.items}>

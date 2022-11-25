@@ -17,8 +17,8 @@ function App() {
 
   return (
     <div className="wrapper">
-      <Basket/>
-      <Header />
+     {basketOpened &&  <Basket onClose={() => setBasketOpened(false)}/>}
+      <Header onClickBasket={() => setBasketOpened(true)} />
       <div className="content">
         <div className="content-header" style={{ marginBottom: "40px" }}>
           <h1 style={{ margin: "0" }}>All sneakers</h1>
