@@ -4,15 +4,36 @@ import Header from "./components/Header/Header";
 import Card from "./components/Card/Card";
 import Search from "./images/content/search.svg";
 import Basket from "./components/Basket/Basket";
-const arr = [
-  {title: 'Man Sneakers: Nike Blazer Mid Suede1', price: 45, imageUrl: 'img/snk1.jpg'},
-  {title: 'Man Sneakers: Nike Air Max 270', price: 45, imageUrl: 'img/snk2.jpg'},
-  {title: 'Man Sneakers: Nike Blazer Mid', price: 30, imageUrl: 'img/snk3.jpg'},
-  {title: 'Man Sneakers: Puma X Aka Boku Future Rider', price: 32, imageUrl: 'img/snk4.jpg'}
-]
-console.log(arr);
+
 function App() {
 
+  const [items, setItems] =useState([
+    {
+     "title": "Man Sneakers: Nike Blazer Mid Suede1",
+     "price": 45,
+     "imageUrl": "img/snk1.jpg"
+    },
+    {
+     "title": "Man Sneakers: Nike Air Max 270",
+     "price": 45,
+     "imageUrl": "img/snk2.jpg"
+    },
+    {
+     "title": "Man Sneakers: Nike Blazer Mid",
+     "price": 30,
+     "imageUrl": "img/snk3.jpg"
+    },
+    {
+     "title": "Man Sneakers: Puma X Aka Boku Future Rider",
+     "price": 32,
+     "imageUrl": "img/snk4.jpg"
+    },
+    {
+      "title": "Man Sneakers: Nike Blazer Mid",
+      "price": 30,
+      "imageUrl": "img/snk3.jpg"
+     }
+   ]);
   const [basketOpened, setBasketOpened] = useState(false);
 
   return (
@@ -28,8 +49,8 @@ function App() {
           </div>
         </div>
 
-        <div style={{ display: "flex" }}>
-        {arr.map((obj) => (
+        <div style={{ display: "flex", flexWrap: "wrap", "justifyContent": "space-between" }}>
+        {items.map((obj) => (
           <Card 
           title={obj.title} 
           price={obj.price}
