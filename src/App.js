@@ -1,44 +1,35 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./index.scss";
 import Header from "./components/Header/Header";
 import Card from "./components/Card/Card";
 import Search from "./images/content/search.svg";
 import Basket from "./components/Basket/Basket";
+import { logDOM } from "@testing-library/react";
 
 function App() {
-
-  const [items, setItems] =useState([
-    {
-     "title": "Man Sneakers: Nike Blazer Mid Suede1",
-     "price": 45,
-     "imageUrl": "img/snk1.jpg"
-    },
-    {
-     "title": "Man Sneakers: Nike Air Max 270",
-     "price": 45,
-     "imageUrl": "img/snk2.jpg"
-    },
-    {
-     "title": "Man Sneakers: Nike Blazer Mid",
-     "price": 30,
-     "imageUrl": "img/snk3.jpg"
-    },
-    {
-     "title": "Man Sneakers: Puma X Aka Boku Future Rider",
-     "price": 32,
-     "imageUrl": "img/snk4.jpg"
-    },
-    {
-      "title": "Man Sneakers: Nike Blazer Mid",
-      "price": 30,
-      "imageUrl": "img/snk3.jpg"
-     }
-   ]);
+  const [items, setItems] = useState([]);
+  const [basketItems, setBasketItems] = useState([]);
   const [basketOpened, setBasketOpened] = useState(false);
+
+  // request to mockAPI for get Card's data
+  useEffect(() => {
+    fetch("https://63813898786e112fe1c51691.mockapi.io/items")
+      .then((res) => {
+        return res.json();
+      })
+      .then((json) => setItems(json));
+  }, []);
+
+  const onAddToCard = (obj) => {
+   setBasketItems(prev => [...prev, obj]) //setBasketItems([...basketItems, obj])
+  }
+
 
   return (
     <div className="wrapper">
-     {basketOpened &&  <Basket onClose={() => setBasketOpened(false)}/>}
+      {basketOpened && (
+        <Basket items={basketItems} onClose={() => setBasketOpened(false)} />
+      )}
       <Header onClickBasket={() => setBasketOpened(true)} />
       <div className="content">
         <div className="content-header" style={{ marginBottom: "40px" }}>
@@ -49,16 +40,23 @@ function App() {
           </div>
         </div>
 
-        <div style={{ display: "flex", flexWrap: "wrap", "justifyContent": "space-between" }}>
-        {items.map((obj) => (
-          <Card 
-          title={obj.title} 
-          price={obj.price}
-          imageUrl={obj.imageUrl}
-          key={obj.price}
-          />
-        ))} 
-         
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "space-between",
+          }}
+        >
+          {items.map((item) => (
+            <Card
+              title={item.title}
+              price={item.price}
+              imageUrl={item.imageUrl}
+              key={item.price}
+              onPlus={onAddToCard}
+              onFavorite={console.log('d')}
+            />
+          ))}
         </div>
       </div>
     </div>
