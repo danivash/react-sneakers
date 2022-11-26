@@ -4,6 +4,7 @@ import Vector from "../../images/content/Vector.svg";
 import Arrow from "../../images/content/arrow.svg";
 
 const Basket = ({onClose, items = []}) => {
+  console.log(items);
   return (
     <div>
       <div className={classes.overlay}>
@@ -39,7 +40,10 @@ const Basket = ({onClose, items = []}) => {
               <li>
                 <span>Total:</span>
                 <div></div>
-                <b>45$</b>
+               {items.map((obj) => (
+                <b>{obj.price}$</b>               
+               ))
+                }
               </li>
               <li>
                 <span>Charge 10%:</span>

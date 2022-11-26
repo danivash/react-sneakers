@@ -14,7 +14,7 @@ const Card = ({ imageUrl, title, price, onFavorite, onPlus}) => {
     setIsAdded(!isAdded);
   };
 
-  return (
+  return (  
     <div className={classes.card}>
       <img
         className={classes.btn}

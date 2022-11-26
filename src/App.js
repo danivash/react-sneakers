@@ -7,9 +7,10 @@ import Basket from "./components/Basket/Basket";
 import { logDOM } from "@testing-library/react";
 
 function App() {
-  const [items, setItems] = useState([]);
-  const [basketItems, setBasketItems] = useState([]);
-  const [basketOpened, setBasketOpened] = useState(false);
+  const [items, setItems] = useState([]); // data card's from request DB
+  const [basketItems, setBasketItems] = useState([]); //data in basket after add card there
+  const [basketOpened, setBasketOpened] = useState(false); //state on button "basket" 
+  const [search, setSearch] = useState('');
 
   // request to mockAPI for get Card's data
   useEffect(() => {
@@ -25,18 +26,23 @@ function App() {
   }
 
 
+  const onChangeSearchInput = (event) => {
+    console.log(event.target.value);
+    setSearch(event.target.value);
+  }
+
   return (
     <div className="wrapper">
       {basketOpened && (
         <Basket items={basketItems} onClose={() => setBasketOpened(false)} />
       )}
-      <Header onClickBasket={() => setBasketOpened(true)} />
+      <Header  onClickBasket={() => setBasketOpened(true)} />
       <div className="content">
         <div className="content-header" style={{ marginBottom: "40px" }}>
-          <h1 style={{ margin: "0" }}>All sneakers</h1>
+          <h1 style={{ margin: "0" }}>{search ? `Search by request: '${search}'` : 'All sneakers'}</h1>
           <div className="search-block">
             <img src={Search} alt="Search" />
-            <input type="text" placeholder="Search..." />
+            <input onChange={onChangeSearchInput} value={search} type="text" placeholder="Search..." />
           </div>
         </div>
 
@@ -47,14 +53,14 @@ function App() {
             justifyContent: "space-between",
           }}
         >
-          {items.map((item) => (
+          {items.map((item, index) => (
             <Card
               title={item.title}
               price={item.price}
               imageUrl={item.imageUrl}
-              key={item.price}
+              key={index}
               onPlus={onAddToCard}
-              onFavorite={console.log('d')}
+              // onFavorite={d}
             />
           ))}
         </div>
