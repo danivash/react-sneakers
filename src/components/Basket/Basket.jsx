@@ -4,7 +4,6 @@ import Vector from "../../images/content/Vector.svg";
 import Arrow from "../../images/content/arrow.svg";
 
 const Basket = ({onClose, items = []}) => {
-  console.log(items);
   return (
     <div>
       <div className={classes.overlay}>
@@ -28,7 +27,7 @@ const Basket = ({onClose, items = []}) => {
                   <p>{obj.title}</p>
                   <b>{obj.price}$</b>
                 </div>
-                <button className={classes.button}>
+                <button  className={classes.button}>
                   <img src={Vector} alt="Remove" />
                 </button>
               </div>
