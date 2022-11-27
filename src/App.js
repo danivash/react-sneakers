@@ -20,30 +20,38 @@ function App() {
     //     return res.json();
     //   })
     //   .then((json) => setItems(json));
-    axios
+
+    axios  //get request to MocAPI (get items)
       .get("https://63813898786e112fe1c51691.mockapi.io/items")
       .then((res) => {
         setItems(res.data);
       });
-    axios
+
+    axios   //get request to MocAPI (get basket)
       .get("https://63813898786e112fe1c51691.mockapi.io/basket")
       .then((res) => {
         setBasketItems(res.data);
       });
   }, []);
 
+  // add Card to basket 
   const onAddToCard = (obj) => {
     axios.post("https://63813898786e112fe1c51691.mockapi.io/basket", obj);
     setBasketItems((prev) => [...prev, obj]); //setBasketItems([...basketItems, obj])
   };
 
+  // delete Card from Basket
+  const onDeleteItem = (id) => {
+    axios.delete(`https://63813898786e112fe1c51691.mockapi.io/basket/${id}`);
+    setBasketItems((prev) => prev.filter(item => item.id !== id)); 
+  };
 
   const onChangeSearchInput = (event) => {
     setSearch(event.target.value);
   };
 
   const onClearSearchInput = () => {
-    setSearch("");
+    setSearch(null);
   };
 
   return (
@@ -52,6 +60,8 @@ function App() {
         <Basket
           items={basketItems}
           onClose={() => setBasketOpened(false)}
+          onDelete={onDeleteItem}
+          key={basketItems.id}
         />
       )}
       <Header onClickBasket={() => setBasketOpened(true)} />
