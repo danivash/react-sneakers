@@ -9,6 +9,7 @@ import Vector from './images/content/Vector.svg'
 
 function App() {
   const [items, setItems] = useState([]); // data card's from request DB
+  const [favorites, setIsFavorites] = useState([]);
   const [basketItems, setBasketItems] = useState([]); //data in basket after add card there
   const [basketOpened, setBasketOpened] = useState(false); //state on button "basket"
   const [search, setSearch] = useState("");
@@ -38,6 +39,12 @@ function App() {
   const onAddToCard = (obj) => {
     axios.post("https://63813898786e112fe1c51691.mockapi.io/basket", obj);
     setBasketItems((prev) => [...prev, obj]); //setBasketItems([...basketItems, obj])
+  };
+
+  // add Card to favorite 
+  const onAddToFavorite = (obj) => {
+    axios.post("https://63813898786e112fe1c51691.mockapi.io/favorites", obj);
+    setIsFavorites((prev) => [...prev, obj]); 
   };
 
   // delete Card from Basket
@@ -93,7 +100,8 @@ function App() {
           style={{
             display: "flex",
             flexWrap: "wrap",
-            justifyContent: "space-between",
+            margin: "10px"
+            // justifyContent: "space-between",
           }}
         >
           {items
@@ -107,7 +115,7 @@ function App() {
                 imageUrl={item.imageUrl}
                 key={index}
                 onPlus={onAddToCard}
-                // onFavorite={d}
+                onFavorite={onAddToFavorite}
               />
             ))}
         </div>

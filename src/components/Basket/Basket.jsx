@@ -3,7 +3,6 @@ import classes from "./Basket.module.scss";
 import Vector from "../../images/content/Vector.svg";
 import Arrow from "../../images/content/arrow.svg";
 import EmptyBasket from "../../images/content/empty-basket.png";
-import classNames from "classnames";
 
 const Basket = ({ onDelete, onClose, items = [] }) => {
   return (

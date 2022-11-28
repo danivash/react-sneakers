@@ -3,10 +3,10 @@ import classes from "./Card.module.scss";
 
 const Card = ({ imageUrl, title, price, onFavorite, onPlus}) => {
   const [isAdded, setIsAdded] = useState(false);
-  const [isAddedFavorite, setIsAddedFavorite] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(false);
 
   const onClickFavorite = () => {
-    setIsAddedFavorite(!isAddedFavorite);
+    setIsFavorite(!isFavorite);
   };
 
   const onClickPlus = () => {
@@ -20,7 +20,7 @@ const Card = ({ imageUrl, title, price, onFavorite, onPlus}) => {
         className={classes.btn}
         onClick={onClickFavorite}
         src={
-          isAddedFavorite
+          isFavorite
             ? "/img/btn-favorite-enabled.png"
             : "/img/btn-favorite-disabled.png"
         }
