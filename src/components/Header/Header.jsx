@@ -26,7 +26,7 @@ const Header = ({onClickBasket}) => {
               <span>{5}$</span>
           </li>
           <li>
-            <Link to="/test"> 
+            <Link to="/favorites"> 
               <img width={18} height={18} src={favorite} alt="my favorite" />
             </Link>
           </li>

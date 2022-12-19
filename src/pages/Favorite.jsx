@@ -5,25 +5,9 @@ const Favorite = () => {
       <div className="content">
         <div className="content-header" style={{ marginBottom: "40px" }}>
           <h1 style={{ margin: "0" }}>
-            {search ? `Search by request: '${search}'` : "All sneakers"}
+            My Favorites
           </h1>
-          <div className="search-block">
-            <img src={Search} alt="Search" />
-            <input
-              onChange={onChangeSearchInput}
-              value={search}
-              type="text"
-              placeholder="Search..."
-            />
-            {search && (
-              <img
-                onClick={onClearSearchInput}
-                className="button"
-                src={Vector}
-                alt="Clear"
-              />
-            )}
-          </div>
+         
         </div>
 
         <div
@@ -34,20 +18,7 @@ const Favorite = () => {
             // justifyContent: "space-between",
           }}
         >
-          {items
-            .filter((items) =>
-              items.title.toLowerCase().includes(search.toLowerCase())
-            ) //filter by title, we are doing all search value and title value to LowerCase
-            .map((item, index) => (
-              <Card
-                title={item.title}
-                price={item.price}
-                imageUrl={item.imageUrl}
-                key={index}
-                onPlus={onAddToCard}
-                onFavorite={onAddToFavorite}
-              />
-            ))}
+    Favorites
         </div>
       </div>
   );

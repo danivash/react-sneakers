@@ -8,6 +8,7 @@ import Search from "./images/content/search.svg";
 import Basket from "./components/Basket/Basket";
 import Vector from './images/content/Vector.svg'
 import Home from "./pages/Home";
+import Favorite from "./pages/Favorite";
 
 function App() {
   const [items, setItems] = useState([]); // data card's from request DB
@@ -85,6 +86,7 @@ function App() {
           onAddToFavorite={onAddToFavorite}
 
         />}></Route>
+        <Route path="/favorites" element={<Favorite/>}></Route>
       </Routes>
     </div>
   );
