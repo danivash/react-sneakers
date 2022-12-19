@@ -6,6 +6,7 @@ const Card = ({ imageUrl, title, price, onFavorite, onPlus}) => {
   const [isFavorite, setIsFavorite] = useState(false);
 
   const onClickFavorite = () => {
+    onFavorite({ title, price, imageUrl });
     setIsFavorite(!isFavorite);
   };
 
