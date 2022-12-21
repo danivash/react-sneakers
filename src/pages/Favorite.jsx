@@ -1,6 +1,7 @@
 import React from 'react'
+import Card from '../components/Card/Card';
 
-const Favorite = () => {
+const Favorite = ({items}) => {
   return (
       <div className="content">
         <div className="content-header" style={{ marginBottom: "40px" }}>
@@ -18,7 +19,17 @@ const Favorite = () => {
             // justifyContent: "space-between",
           }}
         >
-    Favorites
+            {items.map((item, index) => (
+            <Card
+              title={item.title}
+              price={item.price}
+              imageUrl={item.imageUrl}
+              favorite={true}
+              key={index}
+              // onPlus={onAddToCard}
+              // onFavorite={onAddToFavorite}
+            />
+          ))}
         </div>
       </div>
   );

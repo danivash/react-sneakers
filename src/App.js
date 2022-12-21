@@ -25,17 +25,24 @@ function App() {
     //   })
     //   .then((json) => setItems(json));
 
-    axios  //get request to MocAPI (get items)
+    axios  //get data from MocAPI (get items)
       .get("https://63813898786e112fe1c51691.mockapi.io/items")
       .then((res) => {
         setItems(res.data);
       });
 
-    axios   //get request to MocAPI (get basket)
+    axios   //get data from MocAPI (get basket)
       .get("https://63813898786e112fe1c51691.mockapi.io/basket")
       .then((res) => {
         setBasketItems(res.data);
       });
+
+      
+    axios   //get data from MocApI (get favorites)
+      .get("https://63813898786e112fe1c51691.mockapi.io/favorites")
+      .then((res) => {
+        setIsFavorites(res.data);
+    });
   }, []);
 
   // add Card to basket 
@@ -86,7 +93,9 @@ function App() {
           onAddToFavorite={onAddToFavorite}
 
         />}></Route>
-        <Route path="/favorites" element={<Favorite/>}></Route>
+        <Route path="/favorites" element={<Favorite
+          items={favorites}
+        />}></Route>
       </Routes>
     </div>
   );
