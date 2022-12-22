@@ -52,9 +52,21 @@ function App() {
   };
 
   // add Card to favorite 
-  const onAddToFavorite = (obj) => {
-    axios.post("https://63813898786e112fe1c51691.mockapi.io/favorites", obj);
-    setIsFavorites((prev) => [...prev, obj]); 
+  const onAddToFavorite = async (obj) => {
+try {
+  if(favorites.find(favObj => favObj.id === obj.id)) {
+    axios.delete(`https://63813898786e112fe1c51691.mockapi.io/favorites/${obj.id}`);
+    setIsFavorites((prev) => prev.filter(item => item.id !== obj.id)); 
+  } else {
+    const {data} = await axios.post("https://63813898786e112fe1c51691.mockapi.io/favorites", obj);
+    setIsFavorites((prev) => [...prev, data]);
+  }
+} catch (error) {
+  alert("Error, can't add to Favorite")
+}
+
+
+
   };
 
   // delete Card from Basket
@@ -93,8 +105,10 @@ function App() {
           onAddToFavorite={onAddToFavorite}
 
         />}></Route>
-        <Route path="/favorites" element={<Favorite
+        <Route path="/favorites" 
+        element={<Favorite
           items={favorites}
+          onAddToFavorite={onAddToFavorite}
         />}></Route>
       </Routes>
     </div>

@@ -42,9 +42,7 @@ const Home = ({search, items, onChangeSearchInput, onClearSearchInput, onAddToCa
           ) //filter by title, we are doing all search value and title value to LowerCase
           .map((item, index) => (
             <Card
-              title={item.title}
-              price={item.price}
-              imageUrl={item.imageUrl}
+              {...item}
               key={index}
               onPlus={onAddToCard}
               onFavorite={onAddToFavorite}
