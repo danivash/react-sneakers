@@ -104,6 +104,7 @@ try {
 
       <Routes>
         <Route path="/" exact element={<Home 
+          basketItems={basketItems}
           items={items}
           search={search}
           onChangeSearchInput={onChangeSearchInput}

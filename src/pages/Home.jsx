@@ -2,7 +2,7 @@ import React from 'react'
 import Card from '../components/Card/Card';
 import Vector from '../images/content/Vector.svg';
 import Search from "../images/content/search.svg";
-const Home = ({search, items, onChangeSearchInput, onClearSearchInput, onAddToCard, onAddToFavorite }) => {
+const Home = ({basketItems, search, items, onChangeSearchInput, onClearSearchInput, onAddToCard, onAddToFavorite }) => {
   return (
     <div className="content">
       <div className="content-header" style={{ marginBottom: "40px" }}>
@@ -46,6 +46,7 @@ const Home = ({search, items, onChangeSearchInput, onClearSearchInput, onAddToCa
               key={index}
               onPlus={onAddToCard}
               onFavorite={onAddToFavorite}
+              added={basketItems.some(obj => Number(obj.id) === Number(item.id))}
             />
           ))}
       </div>
