@@ -24,25 +24,17 @@ function App() {
     //     return res.json();
     //   })
     //   .then((json) => setItems(json));
+    async function getData() {  //async function get Data from MockAPI
+      const basketResponse = await axios.get("https://63813898786e112fe1c51691.mockapi.io/basket"); 
+      const favoritesResponse = await axios.get("https://63813898786e112fe1c51691.mockapi.io/favorites");
+      const itemsResponse = await axios.get("https://63813898786e112fe1c51691.mockapi.io/items");
+ 
+    setBasketItems(basketResponse.data);
+    setIsFavorites(favoritesResponse.data);
+    setItems(itemsResponse.data);
+    }
 
-    axios  //get data from MocAPI (get items)
-      .get("https://63813898786e112fe1c51691.mockapi.io/items")
-      .then((res) => {
-        setItems(res.data);
-      });
-
-    axios   //get data from MocAPI (get basket)
-      .get("https://63813898786e112fe1c51691.mockapi.io/basket")
-      .then((res) => {
-        setBasketItems(res.data);
-      });
-
-      
-    axios   //get data from MocApI (get favorites)
-      .get("https://63813898786e112fe1c51691.mockapi.io/favorites")
-      .then((res) => {
-        setIsFavorites(res.data);
-    });
+    getData();
   }, []);
 
   // add Card to basket 
