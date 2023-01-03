@@ -47,13 +47,21 @@ function App() {
 
   // add Card to basket 
   const onAddToCard = (obj) => {
-    axios.post("https://63813898786e112fe1c51691.mockapi.io/basket", obj);
-    setBasketItems((prev) => [...prev, obj]); //setBasketItems([...basketItems, obj])
+    if(basketItems.find((item) => Number(item.id) === Number(obj.id))) {
+      axios.delete(`https://63813898786e112fe1c51691.mockapi.io/basket/${obj.id}`);
+      setBasketItems((prev) => prev.filter((item) => Number(item.id) !== Number(obj.id)));
+    } else {
+      axios.post("https://63813898786e112fe1c51691.mockapi.io/basket", obj);
+      setBasketItems((prev) => [...prev, obj]); //setBasketItems([...basketItems, obj])
+
+    }
+
   };
 
   // add Card to favorite 
   const onAddToFavorite = async (obj) => {
 try {
+  console.log(obj);
   if(favorites.find(favObj => favObj.id === obj.id)) {
     axios.delete(`https://63813898786e112fe1c51691.mockapi.io/favorites/${obj.id}`);
     setIsFavorites((prev) => prev.filter(item => item.id !== obj.id)); 
@@ -90,7 +98,6 @@ try {
           items={basketItems}
           onClose={() => setBasketOpened(false)}
           onDelete={onDeleteItem}
-          key={basketItems.index}
         />
       )}
       <Header onClickBasket={() => setBasketOpened(true)} />

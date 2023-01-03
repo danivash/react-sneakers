@@ -5,6 +5,7 @@ import Arrow from "../../images/content/arrow.svg";
 import EmptyBasket from "../../images/content/empty-basket.png";
 
 const Basket = ({ onDelete, onClose, items = [] }) => {
+console.log(items);
   return (
     <div>
       <div className={classes.overlay}>
@@ -19,9 +20,9 @@ const Basket = ({ onDelete, onClose, items = [] }) => {
           {
             items.length > 0 ? (
               <div className={classes.content}>
-            <div className={classes.items}>
-              {items.map((obj) => (
-                <div className={classes.basketItem}>
+            <div  className={classes.items}>
+              {items.map((obj, index) => (
+                <div key={index} className={classes.basketItem}>
                   <img
                     width={70}
                     height={70}
