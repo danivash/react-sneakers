@@ -1,15 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import classes from "./Basket.module.scss";
 import Vector from "../../images/content/Vector.svg";
 import Arrow from "../../images/content/arrow.svg";
 import EmptyBasket from "../../images/content/empty-basket.png";
 
 const Basket = ({ onDelete, onClose, items = [] }) => {
-console.log(items);
-  return (
+
+const calculationPrice = (items, isTotalPrice) => {
+  const arrWithPrice = items.map((obj) => obj.price);
+  let price = arrWithPrice.reduce(
+    (accumulator, currentValue) => accumulator + currentValue
+  );
+  let charge = Math.floor(price / 10);
+  let totalPrice = price + charge;
+  return isTotalPrice ? totalPrice : charge;
+};
+return (
     <div>
-      <div className={classes.overlay}>
-        <div className={classes.right_wrapper}>
+      <div className={classes.overlay} onClick={onClose}>
+      {/* Прекращает дальнейшую передачу текущего события */}
+        <div className={classes.right_wrapper} onClick={(e) => e.stopPropagation()}> 
           <div className={classes.header_basket}>
             <h2>Basket</h2>
             <button onClick={onClose} className={classes.button}>
@@ -45,17 +55,15 @@ console.log(items);
 
             <div className={classes.order}>
               <ul>
-                <li>
+               <li>
                   <span>Total:</span>
-                  <div></div>
-                  {items.map((obj) => (
-                    <b>{obj.price}$</b>
-                  ))}
-                </li>
+                  <div></div>         
+                   <b>{items.length && calculationPrice(items, 1)}$</b> 
+                </li> 
                 <li>
                   <span>Charge 10%:</span>
                   <div></div>
-                  <b>4$</b>
+                  <b>{items.length && calculationPrice(items, 0)}$</b>
                 </li>
               </ul>
               <button className={classes.green_btn}>
@@ -75,9 +83,6 @@ console.log(items);
           </div>
             )
           }
-
-
-
           
         </div>
       </div>
