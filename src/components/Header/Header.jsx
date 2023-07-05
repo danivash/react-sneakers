@@ -23,7 +23,7 @@ const Header = ({onClickBasket}) => {
         <ul>
           <li onClick={onClickBasket} className={classes.basket}>
               <img src={basket} alt="my offer" />
-              <span>{5}$</span>
+              {/* <span>{5}$</span>  */}
           </li>
           <li>
             <Link to="/favorites"> 

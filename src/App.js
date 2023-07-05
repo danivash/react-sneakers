@@ -10,12 +10,13 @@ import Vector from './images/content/Vector.svg'
 import Home from "./pages/Home";
 import Favorite from "./pages/Favorite";
 
-function App() {
+function App() {  
   const [items, setItems] = useState([]); // data card's from request DB
   const [favorites, setIsFavorites] = useState([]);
   const [basketItems, setBasketItems] = useState([]); //data in basket after add card there
   const [basketOpened, setBasketOpened] = useState(false); //state on button "basket"
   const [search, setSearch] = useState("");
+  const [isLoading, setIsLoading] = useState(true)
 
   // request to mockAPI for get Card's data
   useEffect(() => {
@@ -25,10 +26,15 @@ function App() {
     //   })
     //   .then((json) => setItems(json));
     async function getData() {  //async function get Data from MockAPI
+      setIsLoading(true);
+      console.log("Still don't data")
       const basketResponse = await axios.get("https://63813898786e112fe1c51691.mockapi.io/basket"); 
       const favoritesResponse = await axios.get("https://63813898786e112fe1c51691.mockapi.io/favorites");
-      const itemsResponse = await axios.get("https://63813898786e112fe1c51691.mockapi.io/items");
+      const itemsResponse =  await axios.get("https://63813898786e112fe1c51691.mockapi.io/items");
  
+      console.log('Got date')
+    setIsLoading(false);  
+
     setBasketItems(basketResponse.data);
     setIsFavorites(favoritesResponse.data);
     setItems(itemsResponse.data);
@@ -103,7 +109,7 @@ try {
           onClearSearchInput={onClearSearchInput}
           onAddToCard={onAddToCard}
           onAddToFavorite={onAddToFavorite}
-
+          isLoading={isLoading}
         />}></Route>
         <Route path="/favorites" 
         element={<Favorite

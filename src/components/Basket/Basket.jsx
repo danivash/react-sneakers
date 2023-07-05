@@ -18,7 +18,7 @@ const calculationPrice = (items, isTotalPrice) => {
 return (
     <div>
       <div className={classes.overlay} onClick={onClose}>
-      {/* Прекращает дальнейшую передачу текущего события */}
+      {/* Прекращает дальнейшую передачу текущего события  */}
         <div className={classes.right_wrapper} onClick={(e) => e.stopPropagation()}> 
           <div className={classes.header_basket}>
             <h2>Basket</h2>
