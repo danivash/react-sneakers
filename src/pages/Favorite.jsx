@@ -1,7 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Card from '../components/Card/Card';
+import { AppContext } from '../App';
 
-const Favorite = ({items, onAddToFavorite}) => {
+const Favorite = ({onAddToFavorite}) => {
+
+  const favoriteContext = useContext(AppContext);
+  console.log(favoriteContext);
   return (
     <div className="content">
       <div className="content-header" style={{ marginBottom: "40px" }}>
@@ -16,7 +20,7 @@ const Favorite = ({items, onAddToFavorite}) => {
           // justifyContent: "space-between",
         }}
       >
-        {items.map((item, index) => (
+        {favoriteContext.favorites.map((item, index) => (
           <Card
             favorite={true}
             key={index}

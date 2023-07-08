@@ -5,8 +5,12 @@ import basket from '../../images/header/Group.svg'
 import favorite from '../../images/header/favorite.png'
 import profile from '../../images/header/profile.svg'
 import { Link } from 'react-router-dom'
+import { useBasket } from '../../hooks/useBasket'
+
 
 const Header = ({onClickBasket}) => {
+
+const {totalPrice} = useBasket();
   return (
     <header>
       <div className={classes.header}>
@@ -23,7 +27,7 @@ const Header = ({onClickBasket}) => {
         <ul>
           <li onClick={onClickBasket} className={classes.basket}>
               <img src={basket} alt="my offer" />
-              {/* <span>{5}$</span>  */}
+              <span>{totalPrice > 0 ? <b>{totalPrice}</b> : totalPrice}$</span> 
           </li>
           <li>
             <Link to="/favorites"> 

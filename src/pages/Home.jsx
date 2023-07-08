@@ -1,21 +1,23 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Card from '../components/Card/Card';
 import Vector from '../images/content/Vector.svg';
 import Search from "../images/content/search.svg";
+// import { AppContext } from '../App';
 const Home = ({basketItems, search, items, onChangeSearchInput, onClearSearchInput, onAddToCard, onAddToFavorite, isLoading }) => {
- 
+
+
   const renderItems =  () => {
+
     //filter by title, we are doing all search value and title value to LowerCase
     const filteredItems = items.filter((items) =>
     items.title.toLowerCase().includes(search.toLowerCase()));
     return (isLoading ? [...Array(8)] : filteredItems)
     .map((item, index) => (
       <Card
-
         key={index}
         onPlus={onAddToCard}
         onFavorite={onAddToFavorite}
-        added={basketItems.some(obj => Number(obj.id) === Number(item.id))}
+        // added={isItemAdded(item && item.id)}
         loading={isLoading}
         {...item}
       />
