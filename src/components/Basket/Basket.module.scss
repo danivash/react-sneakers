@@ -8,6 +8,9 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 1;
+  visibility: hidden; // скрыт
+  opacity: 0; // прозрачность
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out; //анимация opacity, visibility
 
   .right_wrapper {
     display: flex;
@@ -32,24 +35,24 @@
       }
     }
 
-    .empty_basket {
+    // .empty_basket {
 
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      flex: 1;
+    //   display: flex;
+    //   flex-direction: column;
+    //   justify-content: center;
+    //   align-items: center;
+    //   flex: 1;
 
-      h3 {
-        margin-bottom: 10px;
-      }
+    //   h3 {
+    //     margin-bottom: 10px;
+    //   }
 
-      p {
-        opacity: 0.45;
-        margin-top: 0;
-        margin-bottom: 40px;
-      }
-    }
+    //   p {
+    //     opacity: 0.45;
+    //     margin-top: 0;
+    //     margin-bottom: 40px;
+    //   }
+    // }
 
     .content {
       display: flex;
@@ -129,6 +132,11 @@
 
 
   }
+}
+
+.overlayVisibility {
+  visibility: visible;
+  opacity: 1;
 }
 
 .green_btn {

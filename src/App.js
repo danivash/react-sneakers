@@ -58,29 +58,34 @@ function App() {
 
 
   // add Card to basket
-  const onAddToCard = (obj) => {
-    if (basketItems.find((item) => Number(item.id) === Number(obj.id))) {
+  const onAddToCard = async (obj) => {
+    const findItem =basketItems.find((item) => Number(item.parentId) === Number(obj.id))
+    if (findItem) {
       axios.delete(
         `https://63813898786e112fe1c51691.mockapi.io/basket/${obj.id}`
       );
       setBasketItems((prev) =>
-        prev.filter((item) => Number(item.id) !== Number(obj.id))
+        prev.filter((item) => Number(item.parentId) !== Number(obj.id))
       );
+     await axios.delete(`https://63813898786e112fe1c51691.mockapi.io/basket/${findItem.id}`);
     } else {
-      axios.post("https://63813898786e112fe1c51691.mockapi.io/basket", obj);
       setBasketItems((prev) => [...prev, obj]); //setBasketItems([...basketItems, obj])
+      const {data} = await axios.post("https://63813898786e112fe1c51691.mockapi.io/basket", obj);
+      setBasketItems((prev) => prev.map(item => {
+      return item.parentId === data.parentId ? {...item, id: data.id } : item;
+      })); 
+
     }
   };
 
   // add Card to favorite
   const onAddToFavorite = async (obj) => {
     try {
-      console.log(obj);
       if (favorites.find((favObj) => favObj.id === obj.id)) {
         axios.delete(
           `https://63813898786e112fe1c51691.mockapi.io/favorites/${obj.id}`
         );
-        setIsFavorites((prev) => prev.filter((item) => item.id !== obj.id));
+        setIsFavorites((prev) => prev.filter((item) => Number(item.id) !== Number(obj.id)));
       } else {
         const { data } = await axios.post(
           "https://63813898786e112fe1c51691.mockapi.io/favorites",
@@ -109,21 +114,20 @@ function App() {
 
 
   const isItemAdded = (id) => {
-    return basketItems.some(obj => Number(obj.id) === Number(id))
+    return basketItems.some(obj => Number(obj.parentId) === Number(id))
   }
   
 
   return (
     <div className="wrapper">
      
-      <AppContext.Provider value={{items, basketItems, setBasketItems,favorites, isItemAdded}}>
-      {basketOpened && (
+      <AppContext.Provider value={{items, basketItems, setBasketItems, setBasketOpened, favorites, onAddToFavorite, isItemAdded}}>
         <Basket
           items={basketItems}
           onClose={() => setBasketOpened(false)}
           onDelete={onDeleteItem}
+          opened={basketOpened}
         />
-      )}
         <Header onClickBasket={() => setBasketOpened(true)} />
 
         <Routes>
@@ -146,7 +150,7 @@ function App() {
           <Route
             path="/favorites"
             element={
-              <Favorite  onAddToFavorite={onAddToFavorite} />
+              <Favorite/>
             }
           ></Route>
         </Routes>

@@ -1,29 +1,34 @@
 import React, { useContext, useState } from "react";
 import classes from "./Card.module.scss";
-import ContentLoader from "react-content-loader"
+import ContentLoader from "react-content-loader";
 import { AppContext } from "../../App";
 
-
-const Card = ({id, imageUrl, title, price, onFavorite, onPlus, favorite = false, added = false, loading=false  }) => {
-
-  const {isItemAdded} = useContext(AppContext);
-
+const Card = ({
+  id,
+  imageUrl,
+  title,
+  price,
+  onFavorite,
+  onPlus,
+  favorite = false,
+  added = false,
+  loading = false,
+}) => {
+  const { isItemAdded } = useContext(AppContext);
 
   // const [isAdded, setIsAdded] = useState(added);
   const [isFavorite, setIsFavorite] = useState(favorite);
-
+  const obj = { id, parentId: id, title, price, imageUrl};
   // console.log(title, added)
   const onClickFavorite = () => {
-    onFavorite({id, title, price, imageUrl});
+    onFavorite(obj);
     setIsFavorite(!isFavorite);
   };
 
   const onClickPlus = () => {
-    onPlus({id, title, price, imageUrl});
+    onPlus(obj);
     // setIsAdded(!isAdded);
-    
   };
-
 
   return (
     <div className={classes.card}>
@@ -64,13 +69,15 @@ const Card = ({id, imageUrl, title, price, onFavorite, onPlus, favorite = false,
             <img
               className={classes.btn}
               onClick={onClickPlus}
-              src={isItemAdded(id) ? "/img/btn-checked.svg" : "/img/btn-plus.svg"}
+              src={
+                isItemAdded(id) ? "/img/btn-checked.svg" : "/img/btn-plus.svg"
+              }
               width={11}
               height={11}
               alt="plus"
             />
           </div>
-          {  console.log(title, isItemAdded(title))}
+          {/* {console.log(title, isItemAdded(title))} */}
         </>
       )}
     </div>

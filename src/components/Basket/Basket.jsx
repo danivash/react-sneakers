@@ -1,14 +1,30 @@
 import React, { useContext, useState } from "react";
 import classes from "./Basket.module.scss";
 import Vector from "../../images/content/Vector.svg";
-import Arrow from "../../images/content/arrow.svg";
-import EmptyBasket from "../../images/content/empty-basket.png";
 import { useBasket } from "../../hooks/useBasket";
+import Info from "../Info/Info";
+import axios from "axios";
 
-const Basket = ({ onDelete, onClose, items=[]}) => {
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-const {totalPrice} = useBasket();
 
+const Basket = ({ onDelete, onClose, items=[], opened}) => {
+
+const {totalPrice, basketItems, setBasketItems} = useBasket();
+const [isOrderComplete, setIsOrderComplete] = useState(false)
+console.log(basketItems);
+
+const onClickOrder = async () => {
+  setIsOrderComplete(true);
+  setBasketItems([]);
+
+  for (let i = 0; i < basketItems.length; i+= 1) {
+    const item = basketItems[i];
+    await axios.delete('https://63813898786e112fe1c51691.mockapi.io/basket/' + item.id);
+    await delay(1000);
+  }
+  // basketItems.map((item) => onDelete(Number(item.id)));
+}
       // const calculationPrice = (items, isTotalPrice) => {
       //   const arrWithPrice = items.map((obj) => obj.price);
       //   let price = arrWithPrice.reduce(
@@ -19,8 +35,7 @@ const {totalPrice} = useBasket();
       //   return isTotalPrice ? totalPrice : charge;
       // };
   return (
-    <div> 
-      <div className={classes.overlay} onClick={onClose}>
+      <div className={`${classes.overlay} ${opened && classes.overlayVisibility}`} onClick={onClose}>
         {/* Прекращает дальнейшую передачу текущего события  */}
         <div
           className={classes.right_wrapper}
@@ -75,30 +90,17 @@ const {totalPrice} = useBasket();
                     </b>
                   </li>
                 </ul>
-                <button className={classes.green_btn}>
+                <button className={classes.green_btn} onClick={onClickOrder}>
                   Pay now{" "}
-                  <img className={classes.img_right} src={Arrow} alt="Arrow" />
+                  <img className={classes.img_right} src={'/img/arrow.svg'} alt="Arrow" />
                 </button>
               </div>
             </div>
           ) : (
-            <div className={classes.empty_basket}>
-              <img src={EmptyBasket} alt="Empty Basket" />
-              <h3>Empty Basket</h3>
-              <p>Please, add though one pair of sneakers</p>
-              <button
-                onClick={onClose}
-                style={{ width: "300px" }}
-                className={classes.green_btn}
-              >
-                <img className={classes.img_left} src={Arrow} alt="Arrow" /> go
-                back
-              </button>
-            </div>
+            <Info title={isOrderComplete ? "Your Order is complete!" : "Empty Basket"} description={isOrderComplete ? `Thank you for purchase for ${totalPrice}$` : "Please, add though one pair of sneakers"} imageContent={isOrderComplete ? "/img/complete-order.png" : "/img/empty-basket.png"}/>
           )}
         </div>
       </div>
-    </div>
   );
 };
 
