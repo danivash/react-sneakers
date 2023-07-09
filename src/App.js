@@ -3,10 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import axios from "axios";
 import "./index.scss";
 import Header from "./components/Header/Header";
-import Card from "./components/Card/Card";
-import Search from "./images/content/search.svg";
 import Basket from "./components/Basket/Basket";
-import Vector from './images/content/Vector.svg'
 import Home from "./pages/Home";
 import Favorite from "./pages/Favorite";
 
@@ -132,7 +129,7 @@ function App() {
 
         <Routes>
           <Route
-            path="/"
+            path=""
             exact
             element={
               <Home
@@ -148,7 +145,7 @@ function App() {
             }
           ></Route>
           <Route
-            path="/favorites"
+            path="favorites"
             element={
               <Favorite/>
             }

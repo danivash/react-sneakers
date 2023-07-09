@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
 import classes from "./Basket.module.scss";
-import Vector from "../../images/content/Vector.svg";
 import { useBasket } from "../../hooks/useBasket";
 import Info from "../Info/Info";
 import axios from "axios";
@@ -44,7 +43,7 @@ const onClickOrder = async () => {
           <div className={classes.header_basket}>
             <h2>Basket</h2>
             <button onClick={onClose} className={classes.button}>
-              <img src={Vector} alt="Close" />
+              <img src={"img/Vector.svg"} alt="Close" />
             </button>
           </div>
 
@@ -67,7 +66,7 @@ const onClickOrder = async () => {
                       onClick={() => onDelete(obj.id)}
                       className={classes.button}
                     >
-                      <img src={Vector} alt="Delete" />
+                      <img src={"img/Vector.svg"} alt="Delete" />
                     </button>
                   </div>
                 ))}
@@ -92,12 +91,12 @@ const onClickOrder = async () => {
                 </ul>
                 <button className={classes.green_btn} onClick={onClickOrder}>
                   Pay now{" "}
-                  <img className={classes.img_right} src={'/img/arrow.svg'} alt="Arrow" />
+                  <img className={classes.img_right} src={'img/arrow.svg'} alt="Arrow" />
                 </button>
               </div>
             </div>
           ) : (
-            <Info title={isOrderComplete ? "Your Order is complete!" : "Empty Basket"} description={isOrderComplete ? `Thank you for purchase for ${totalPrice}$` : "Please, add though one pair of sneakers"} imageContent={isOrderComplete ? "/img/complete-order.png" : "/img/empty-basket.png"}/>
+            <Info title={isOrderComplete ? "Your Order is complete!" : "Empty Basket"} description={isOrderComplete ? `Thank you for purchase for ${totalPrice}$` : "Please, add though one pair of sneakers"} imageContent={isOrderComplete ? "img/complete-order.png" : "img/empty-basket.png"}/>
           )}
         </div>
       </div>

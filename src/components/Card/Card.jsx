@@ -54,8 +54,8 @@ const Card = ({
             onClick={onClickFavorite}
             src={
               isFavorite
-                ? "/img/btn-favorite-enabled.png"
-                : "/img/btn-favorite-disabled.png"
+                ? "img/btn-favorite-enabled.png"
+                : "img/btn-favorite-disabled.png"
             }
             alt="Save Sneakers to favorite"
           />
@@ -70,7 +70,7 @@ const Card = ({
               className={classes.btn}
               onClick={onClickPlus}
               src={
-                isItemAdded(id) ? "/img/btn-checked.svg" : "/img/btn-plus.svg"
+                isItemAdded(id) ? "img/btn-checked.svg" : "img/btn-plus.svg"
               }
               width={11}
               height={11}

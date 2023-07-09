@@ -1,6 +1,5 @@
 import React, { useContext } from 'react'
 import Card from '../components/Card/Card';
-import Vector from '../images/content/Vector.svg';
 import Search from "../images/content/search.svg";
 // import { AppContext } from '../App';
 const Home = ({basketItems, search, items, onChangeSearchInput, onClearSearchInput, onAddToCard, onAddToFavorite, isLoading }) => {
@@ -41,7 +40,7 @@ const Home = ({basketItems, search, items, onChangeSearchInput, onClearSearchInp
             <img
               onClick={onClearSearchInput}
               className="button"
-              src={Vector}
+              src={"img/Vector.svg"}
               alt="Clear"
             />
           )}
